@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>This is Basic Api Example</title>
+</head>
+<body>
+<div style="align: center">
+    <button id="btnSubmit" name="btnSubmit" onClick="fetchApiCall()">Fetch API</button>
+</div>
+<script>
+	function fetchApiCall(){
+		alert('calling backend api');
+
+		fetchJSON().then(data => {
+
+		console.log('data: '+data.templateId+ ' '+ data.name+ ' '+data.location); // fetched data
+		alert(data.name + " : "+data.location);
+	});
+
+
+	async function fetchJSON() {
+	    const response = await fetch("http://localhost:8081/fetchapi/public/fetchapi/v1/template/111");
+	    const data = await response.json();
+	    return data;
+	}
+</script>
+</body>
+</html>
